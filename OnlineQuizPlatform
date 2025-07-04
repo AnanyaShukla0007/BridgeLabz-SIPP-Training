@@ -1,0 +1,62 @@
+import java.util.*;
+
+class InvalidQuizSubmissionException extends Exception {
+    public InvalidQuizSubmissionException(String message) {
+        super(message);
+    }
+}
+
+public class QuizProcessorBasic {
+
+    // Method to calculate score
+    public static int calculateScore(String[] correct, String[] user) throws InvalidQuizSubmissionException {
+        if (correct.length != user.length) {
+            throw new InvalidQuizSubmissionException("Answer length does not match.");
+        }
+
+        int score = 0;
+        for (int i = 0; i < correct.length; i++) {
+            if (correct[i].equalsIgnoreCase(user[i])) {
+                score++;
+            }
+        }
+        return score;
+    }
+
+    // Method to assign grade
+    public static String getGrade(int score, int total) {
+        double percentage = (score * 100.0) / total;
+
+        if (percentage >= 90) return "A";
+        else if (percentage >= 75) return "B";
+        else if (percentage >= 50) return "C";
+        else return "F";
+    }
+
+    public static void main(String[] args) {
+        // Correct answers
+        String[] correctAnswers = {"A", "B", "C", "D"};
+
+        // User answers
+        String[] user1 = {"A", "B", "A", "D"};
+        String[] user2 = {"A", "B", "C", "D"};
+
+        // Store scores of multiple users
+        List<Integer> scoreList = new ArrayList<>();
+
+        try {
+            int score1 = calculateScore(correctAnswers, user1);
+            System.out.println("User 1 Score: " + score1 + ", Grade: " + getGrade(score1, correctAnswers.length));
+            scoreList.add(score1);
+
+            int score2 = calculateScore(correctAnswers, user2);
+            System.out.println("User 2 Score: " + score2 + ", Grade: " + getGrade(score2, correctAnswers.length));
+            scoreList.add(score2);
+
+        } catch (InvalidQuizSubmissionException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+
+        System.out.println("All Scores: " + scoreList);
+    }
+}
