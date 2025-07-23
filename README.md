@@ -105,7 +105,66 @@ Topics: Implementation of singly, doubly, and circular LinkedLists in Java; oper
 
 ---
 
+📅 04/07/25 (Fri) – Day 3 – Stacks
+Topics: Introduction to Stack, implementation of Stack using Array and LinkedList and other Problems. 
+🔗 Code
 
+---
+
+📅 07/07/25 (Mon) – Day 4 – Queues
+Topics: Introduction to Queues, implementation of Queues using Array and LinkedList and other Problems. 
+🔗 Code
+
+---
+
+📅 08/07/25 (Tue) – Day 5 – HashMaps
+Topics: Introduction to HashMap its implementation and problem solving using it and Hashing Function. 
+🔗 Code
+
+---
+
+📅 09/07/25 (Wed) – Day 6 – Sorting Algorithms
+Topics: Introduction to all Sorting Algos like Bubble Sort, Selection Sort, Insertion Sort, Merge Sort, Quick Sort, Heap Sort. 
+🔗 Code
+
+---
+
+📅 10/07/25 (Thurs) – Day 7 – Linear and Binary Search
+Topics: Introduction to Linear and Binary Search , implementation of Linear and Binary Search. Questions related to these. 
+🔗 Code
+
+---
+
+📅 11/07/25 (Fri) – Day 8 – String Builder and Buffer
+Topics: Introduction to StringBuilder and StringBuffer , its implementation and problem solving using it. 
+🔗 Code
+
+---
+
+📅 14/07/25 (Mon) – Day 9 – File, Buffer and InputStream Readers
+Topics: Introduction to FileReader, BufferedReader, InputStreamReader, File and its operations. 
+🔗 Code
+
+---
+
+📅 15/07/25 (Tue) – Day 10 – Space and Time Complexity
+Topics: Understanding Big-O Notation, Time Complexity Analysis, Space Complexity Analysis, Best, Worst, and Average Case Complexities , Practical Guidelines for Optimizing Java Code 
+🔗 Code
+
+---
+
+Generics Branch
+📅 21/07/25 (Mon) – Day 1 – Java Generics
+Topics: Introduction to Generics, Type Parameters, Generic Classes, Generic Methods, Bounded Type Parameters, Wildcards. 
+🔗 Code
+
+---
+
+Workshop Branch
+Ocassionally practice problems done in class on board on the concept studied in the class. This is to ensure that the student is able to apply the concept to solve problems 
+🔗 Code
+
+---
 
 
 ## 📝 Note:
