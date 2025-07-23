@@ -101,69 +101,75 @@ Topics: Demonstrating encapsulation using private fields and public methods; met
 
 ### 📅 20/06/25 (Fri) – Day 1 – LinkedList  
 Topics: Implementation of singly, doubly, and circular LinkedLists in Java; operations like insertion, deletion, traversal; solving basic LinkedList problems  
-🔗 [Code](https://github.com/AnanyaShukla0007/BridgeLabz-SIPP-Training/tree/OOPS/Class-objects)
+🔗 [Code](https://github.com/AnanyaShukla0007/BridgeLabz-SIPP-Training/tree/DSA/LinkedList)
 
 ---
 
-### 📅 04/07/25 (Fri) – Day 3 – Stacks
+### 📅 04/07/25 (Fri) – Day 2 – Stacks
 Topics: Introduction to Stack, implementation of Stack using Array and LinkedList, and other problems
-🔗 Code
+🔗 [Code](https://github.com/AnanyaShukla0007/BridgeLabz-SIPP-Training/tree/DSA/StackQueueHash/Stack)
 
 ---
 
-### 📅 07/07/25 (Mon) – Day 4 – Queues
+### 📅 07/07/25 (Mon) – Day 3 – Queues
 Topics: Introduction to Queues, implementation of Queues using Array and LinkedList, and other problems
-🔗 Code
+🔗 [Code](https://github.com/AnanyaShukla0007/BridgeLabz-SIPP-Training/tree/DSA/StackQueueHash/Queue)
 
 ---
 
-### 📅 08/07/25 (Tue) – Day 5 – HashMaps
+### 📅 08/07/25 (Tue) – Day 4 – HashMaps
 Topics: Introduction to HashMap, its implementation, and problem solving using it and hashing function
-🔗 Code
+🔗 [Code](https://github.com/AnanyaShukla0007/BridgeLabz-SIPP-Training/tree/DSA/StackQueueHash/HashMap)
 
 ---
 
-### 📅 09/07/25 (Wed) – Day 6 – Sorting Algorithms
+### 📅 09/07/25 (Wed) – Day 5 – Sorting Algorithms
 Topics: Introduction to all sorting algorithms like Bubble Sort, Selection Sort, Insertion Sort, Merge Sort, Quick Sort, and Heap Sort
-🔗 Code
+🔗 [Code](https://github.com/AnanyaShukla0007/BridgeLabz-SIPP-Training/tree/DSA/SortingAlgorithm)
 
 ---
 
-### 📅 10/07/25 (Thu) – Day 7 – Linear and Binary Search
+### 📅 10/07/25 (Thu) – Day 6 – Linear and Binary Search
 Topics: Introduction to Linear and Binary Search, implementation, and related problem solving
-🔗 Code
+🔗 [Code](https://github.com/AnanyaShukla0007/BridgeLabz-SIPP-Training/tree/DSA/LinearBinarySearch)
 
 ---
 
-### 📅 11/07/25 (Fri) – Day 8 – StringBuilder and StringBuffer
+### 📅 11/07/25 (Fri) – Day 7 – StringBuilder and StringBuffer
 Topics: Introduction to StringBuilder and StringBuffer, their implementation, and problem solving using them
-🔗 Code
+🔗 [Code](https://github.com/AnanyaShukla0007/BridgeLabz-SIPP-Training/tree/DSA/LinearBinarySearch/StringBuilderBuffer)
 
 ---
 
-### 📅 14/07/25 (Mon) – Day 9 – File, Buffer, and InputStream Readers
+### 📅 14/07/25 (Mon) – Day 8 – File, Buffer, and InputStream Readers
 Topics: Introduction to FileReader, BufferedReader, InputStreamReader, File handling, and related operations
-🔗 Code
+🔗 [Code](https://github.com/AnanyaShukla0007/BridgeLabz-SIPP-Training/tree/DSA/LinearBinarySearch/FileInputStreamReader)
 
 ---
 
-### 📅 15/07/25 (Tue) – Day 10 – Space and Time Complexity
+### 📅 15/07/25 (Tue) – Day 9 – Space and Time Complexity
 Topics: Understanding Big-O Notation, Time and Space Complexity Analysis, Best/Average/Worst cases, and optimization practices in Java
-🔗 Code
+🔗 [Code](https://github.com/AnanyaShukla0007/BridgeLabz-SIPP-Training/tree/DSA/AlgoRuntimeAnalysis)
 
 ---
 
 ## GENERICS Branch 📦
 ### 📅 21/07/25 (Mon) – Day 1 – Java Generics
 Topics: Introduction to Generics, type parameters, generic classes and methods, bounded type parameters, and wildcards
-🔗 Code
+🔗 [Code](https://github.com/AnanyaShukla0007/BridgeLabz-SIPP-Training/tree/Generic/Java-Generics)
+
+---
+
+### 📅 23/07/25 (Wed) – Day 2 – Collections
+Topics: Overview of Collections, Framework, List and Set Interfaces
+🔗 [Code](https://github.com/AnanyaShukla0007/BridgeLabz-SIPP-Training/tree/Generic/Java-Generics)
 
 ---
 
 ## WORKSHOP Branch 🧪
 ### 🗓️ Ongoing – Practice Problems
 Topics: Practice problems discussed and solved in class based on daily concepts to ensure application and understanding
-🔗 Code
+🔗 [Code](https://github.com/AnanyaShukla0007/BridgeLabz-SIPP-Training/tree/Workshop)
 
 ---
 
