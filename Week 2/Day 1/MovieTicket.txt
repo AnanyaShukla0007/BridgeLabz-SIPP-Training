@@ -1,0 +1,30 @@
+Class Ticket
+    Attributes: movieName, seatNumber, price, bookingStatus
+    Method cancel(): bookingStatus = "Cancelled"
+
+Class Theatre
+    Attributes: movieSchedules, availableSeats
+    Method bookTicket(customer, movie, seat):
+        If seat in availableSeats:
+            Create Ticket(movie, seat, price, "Booked")
+            Remove seat from availableSeats
+            Return Ticket
+        Else
+            Print "Seat not available"
+    Method cancelTicket(ticket):
+        ticket.cancel()
+        Add ticket.seatNumber back to availableSeats
+
+Class Customer
+    Attributes: name
+    Method book(theatre, movie, seat):
+        ticket = theatre.bookTicket(this, movie, seat)
+    Method cancel(ticket, theatre):
+        theatre.cancelTicket(ticket)
+
+Main:
+    theatre = Theatre(movies: ["Avengers"])
+    customer = Customer("Ravi")
+
+    t1 = customer.book(theatre, "Avengers", "A12")
+    customer.cancel(t1, theatre)

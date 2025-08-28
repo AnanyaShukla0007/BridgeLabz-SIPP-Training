@@ -1,0 +1,19 @@
+Class TaskOrganizer
+    Attribute: LinkedHashMap<Integer, String> tasks
+    Method addTask(description):
+        Generate new taskId
+        tasks.put(taskId, description)
+    Method removeTask(taskId):
+        tasks.remove(taskId)
+    Method viewTasks():
+        For each entry in tasks:
+            Print taskId → description
+
+Main:
+    organizer = TaskOrganizer()
+    organizer.addTask("Check emails")
+    organizer.addTask("Prepare sales report")
+    organizer.addTask("Call client")
+
+    organizer.removeTask(2)
+    organizer.viewTasks()

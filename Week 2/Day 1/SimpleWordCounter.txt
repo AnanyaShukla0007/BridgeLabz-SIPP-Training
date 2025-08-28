@@ -1,0 +1,12 @@
+Class WordCounter
+    Method countWords(paragraph):
+        words = split paragraph by spaces
+        cleanWords = lowercase & remove punctuation
+        For each word in cleanWords:
+            map.put(word, map.getOrDefault(word, 0) + 1)
+        sortedList = sort map entries by value descending
+        Print sortedList
+
+Main:
+    text = "The news today is about the rise in technology trends."
+    WordCounter.countWords(text)

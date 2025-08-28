@@ -1,0 +1,33 @@
+class Employee
+    attributes: name, department, rating, baseSalary
+
+class BonusDistributionEngine
+
+    method distributeBonuses(employees: List<Employee>)
+        deptMap = employees.stream()
+            .collect(groupingBy(Employee::getDepartment))
+        deptMap.forEach((dept, empList) -> {
+            totalSalary = empList.stream()
+                                .mapToDouble(e -> e.baseSalary)
+                                .sum()
+
+            bonusPool = totalSalary * 0.10
+
+            totalRatings = empList.stream()
+                                  .mapToInt(e -> e.rating)
+                                  .sum()
+            empList.forEach(emp -> {
+                share = (emp.rating / totalRatings) * bonusPool
+                print dept + " | " + emp.name + " → ₹" + share
+            })
+        })
+
+main()
+    employees = [
+        ("Emp-A","IT",5,50000),
+        ("Emp-B","IT",3,30000),
+        ("Emp-C","IT",2,20000)
+    ]
+
+    engine = new BonusDistributionEngine()
+    engine.distributeBonuses(employees)

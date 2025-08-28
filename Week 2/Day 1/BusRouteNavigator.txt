@@ -1,0 +1,22 @@
+Class Node
+    Attributes: stopName, next
+
+Class BusRoute
+    Attribute: head
+    Method insertAfter(stop, newStop)
+    Method delete(stop)
+    Method search(stop)
+
+Main:
+    route = BusRoute()
+    route.insert("Depot")
+    route.insert("Main Street")
+    route.insert("City Mall")
+    route.insert("Hospital")
+    route.insert("Airport")
+
+    route.insertAfter("City Mall", "University")
+    route.delete("Hospital")
+
+    If route.search("Airport"):
+        Print "Airport stop exists."

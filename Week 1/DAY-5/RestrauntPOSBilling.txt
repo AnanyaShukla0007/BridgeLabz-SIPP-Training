@@ -1,0 +1,138 @@
+abstract class Item
+    protected name: String
+    protected basePrice: double
+    constructor(name, basePrice)
+    getters...
+
+class FoodItem extends Item
+class BeverageItem extends Item
+class ImportedItem extends Item
+class PremiumItem extends Item
+
+interface TaxCalculator
+    method compute(item: Item) -> double
+
+class FoodTax implements TaxCalculator
+    method compute(item)
+        return item.getBasePrice() * 0.05
+
+class BeverageTax implements TaxCalculator
+    method compute(item)
+        return item.getBasePrice() * 0.12
+
+class ImportedTax implements TaxCalculator
+    private baseTax: TaxCalculator   
+    constructor(baseTax)
+        this.baseTax = baseTax
+    method compute(item)
+        gst = baseTax.compute(item)
+        customs = item.getBasePrice() * 0.10
+        return gst + customs
+
+class LuxuryTax implements TaxCalculator
+    method compute(item)
+        return item.getBasePrice() * 0.08
+
+interface DiscountPolicy
+    method apply(subtotal: double) -> double
+
+class NoDiscount implements DiscountPolicy
+    method apply(subtotal) = subtotal
+
+class FlatDiscount implements DiscountPolicy
+    private amount: double
+    constructor(amount)
+    method apply(subtotal)
+        return max(0, subtotal - amount)
+
+class PercentageDiscount implements DiscountPolicy
+    private percent: double
+    constructor(percent)
+    method apply(subtotal)
+        return subtotal * (1 - percent)
+
+class BuyOneGetOne implements DiscountPolicy
+    method apply(subtotal, items: List<Item>) -> double
+
+class LineItem
+    item: Item
+    taxCalculator: TaxCalculator
+
+class Cart
+    private lines: List<LineItem>
+    method add(item: Item, taxCalc: TaxCalculator)
+        lines.add(new LineItem(item, taxCalc))
+    method items() -> List<Item>
+
+class BillingEngine
+    private discountPolicy: DiscountPolicy
+    private luxuryTaxEnabled: boolean
+    constructor(discountPolicy, luxuryTaxEnabled=false)
+    method total(cart: Cart) -> double
+        subtotal = 0
+        taxTotal = 0
+        for line in cart.lines
+            price = line.item.getBasePrice()
+            tax = line.taxCalculator.compute(line.item)
+            if luxuryTaxEnabled AND line.item is PremiumItem
+                tax += new LuxuryTax().compute(line.item)
+            subtotal += price
+            taxTotal += tax
+        gross = subtotal + taxTotal
+        if discountPolicy is BuyOneGetOneAware
+            return discountPolicy.applyWithItems(gross, cart.items())
+        else
+            return discountPolicy.apply(gross)
+
+class TaxResolver
+    method forItem(item: Item) -> TaxCalculator
+        if item is ImportedItem
+            return new ImportedTax(new FoodTax())
+        else if item is BeverageItem
+            return new BeverageTax()
+        else if item is FoodItem
+            return new FoodTax()
+        else if item is PremiumItem
+            return new FoodTax()
+
+main()
+    resolver = new TaxResolver()
+
+    paneer = new FoodItem("Paneer Tikka", 300)
+    coke = new BeverageItem("Coke", 80)
+    importedCheese = new ImportedItem("Imported Cheese", 500)
+
+    cart = new Cart()
+    cart.add(paneer, resolver.forItem(paneer))        
+    cart.add(coke, resolver.forItem(coke))            
+    cart.add(importedCheese, resolver.forItem(importedCheese))
+
+    discount = new PercentageDiscount(0.10)
+    engine = new BillingEngine(discount)
+    finalAmount = engine.total(cart)
+    print "Payable:", finalAmount
+
+interface BuyOneGetOneAware
+    method applyWithItems(gross: double, items: List<Item>) -> double
+
+class BOGODiscount implements DiscountPolicy, BuyOneGetOneAware
+    method apply(subtotal) -> double
+        return subtotal
+    method applyWithItems(gross, items)
+        eligiblePairs = groupByName(items)
+        freeAmount = 0
+        for group in eligiblePairs.values()
+            sort by price asc
+            freeAmount += sum of every 2nd item price
+        return gross - freeAmount
+
+engine = new BillingEngine(new BOGODiscount())
+finalAmount = engine.total(cart)
+
+butterChickenPremium = new PremiumItem("Butter Chicken - Premium", 600)
+
+cart2 = new Cart()
+cart2.add(butterChickenPremium, resolver.forItem(butterChickenPremium))
+festivalEngine = new BillingEngine(new NoDiscount(), luxuryTaxEnabled=true)
+amount2 = festivalEngine.total(cart2)
+print "Festival payable:", amount2

@@ -1,0 +1,87 @@
+interface DiagnosisStrategy
+    method diagnose(symptoms: List<String>) -> List<String>
+
+class Patient
+    private name: String
+    private department: String
+    private symptoms: List<String>
+    constructor(name, department, symptoms)
+    getters...
+
+class RuleBasedDiagnosis implements DiagnosisStrategy
+    private rules: Map<Set<String>, List<String>>
+    constructor()
+        rules = preloadCommonRules()
+    method diagnose(symptoms)
+        matches = []
+        for (keySet, diseases) in rules
+            if keySet subsetOf symptoms
+                matches.addAll(diseases)
+        if matches.isEmpty()
+            return ["No strong rule-based match; suggest tests"]
+        return distinct(matches)
+
+class AIBasedDiagnosis implements DiagnosisStrategy
+    method diagnose(symptoms)
+        scoreMap = HashMap<String, Double>()
+        for s in symptoms
+            bump scores based on trained priors (mocked)
+        return topKByScore(scoreMap, 2)
+
+class ProbabilityBasedDiagnosis implements DiagnosisStrategy
+    private prior: Map<String, Double>            
+    private likelihood: Map<String, Map<String, Double>>
+    method diagnose(symptoms)
+        posteriors = Map<Disease, Double>()
+        for each disease in prior
+            p = prior[disease]
+            for sym in symptoms
+                p *= likelihood[disease].getOrDefault(sym, 0.5)
+            posteriors[disease] = p
+        return topKByValue(posteriors, 3)
+
+class DiagnosisContext
+    private strategy: DiagnosisStrategy
+    method setStrategy(s: DiagnosisStrategy)
+        strategy = s
+    method runDiagnosis(patient: Patient) -> List<String>
+        require strategy != null
+        return strategy.diagnose(patient.getSymptoms())
+
+interface StrategyResolver
+    method resolve(department: String) -> DiagnosisStrategy
+
+class DefaultStrategyResolver implements StrategyResolver
+    method resolve(department)
+        switch(department)
+            case "General Medicine": return new RuleBasedDiagnosis()
+            case "Neurology":        return new AIBasedDiagnosis()
+            default:                 return new ProbabilityBasedDiagnosis()
+
+main()
+    ctx = new DiagnosisContext()
+    resolver = new DefaultStrategyResolver()
+
+    p1 = new Patient("Ravi", "General Medicine", ["fever","cough","fatigue"])
+    ctx.setStrategy(resolver.resolve(p1.getDepartment()))
+    result1 = ctx.runDiagnosis(p1)
+    print "Diagnosis for p1:", result1
+
+    p2 = new Patient("Asha", "Neurology", ["headache","dizziness","nausea"])
+    ctx.setStrategy(resolver.resolve(p2.getDepartment()))
+    result2 = ctx.runDiagnosis(p2)
+    print "Diagnosis for p2:", result2
+
+    class GeneticPatternDiagnosis implements DiagnosisStrategy
+        method diagnose(symptoms)
+            return ["Thalassemia (risk)", "Cystic Fibrosis (risk)"]
+
+    class ExtendedStrategyResolver extends DefaultStrategyResolver
+        method resolve(department)
+            if department == "Genetics": return new GeneticPatternDiagnosis()
+            else return super.resolve(department)
+
+    p3 = new Patient("Neel", "Genetics", ["fatigue","pale skin"])
+    ctx.setStrategy(new ExtendedStrategyResolver().resolve(p3.getDepartment()))
+    result3 = ctx.runDiagnosis(p3)
+    print "Diagnosis for p3:", result3

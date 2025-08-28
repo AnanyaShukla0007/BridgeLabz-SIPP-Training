@@ -1,0 +1,41 @@
+class Zone
+    attribute: name
+
+class Reading
+    attribute: double value
+
+class EnergyUsageTracker
+    private data: Map<Zone, Map<LocalDate, List<Reading>>>
+
+    method addReading(zone: Zone, day: LocalDate, reading: Reading)
+        if zone not in data
+            data[zone] = new HashMap()
+        if day not in data[zone]
+            data[zone][day] = new ArrayList()
+        data[zone][day].add(reading)
+
+    method generatePeakLoadReport()
+        data.entrySet().stream().forEach(zoneEntry ->
+            zone = zoneEntry.key
+            dayMap = zoneEntry.value
+
+            dayMap.entrySet().stream().forEach(dayEntry ->
+                day = dayEntry.key
+                readings = dayEntry.value
+                peak = readings.stream()
+                               .mapToDouble(r -> r.value)
+                               .max()
+                               .orElse(0)
+                print zone.name + " | " + day + " → Peak: " + peak + " kW"
+            )
+        )
+
+main()
+    tracker = new EnergyUsageTracker()
+    tracker.addReading("Zone-A", "2025-08-01", 120)
+    tracker.addReading("Zone-A", "2025-08-01", 200)
+    tracker.addReading("Zone-B", "2025-08-01", 350)
+
+    tracker.generatePeakLoadReport()
+
+    

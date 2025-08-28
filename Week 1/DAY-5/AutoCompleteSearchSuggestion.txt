@@ -1,0 +1,55 @@
+class TrieNode
+    children: Map<char, TrieNode>
+    isEnd: boolean
+    popularity: int
+    keyword: String
+
+class Trie
+    private root: TrieNode
+
+    constructor()
+        root = new TrieNode()
+
+    method insert(word: String, popularity: int = 0)
+        node = root
+        for ch in word
+            if ch not in node.children
+                node.children[ch] = new TrieNode()
+            node = node.children[ch]
+        node.isEnd = true
+        node.keyword = word
+        node.popularity = popularity
+
+    method searchPrefix(prefix: String) -> TrieNode
+        node = root
+        for ch in prefix
+            if ch not in node.children
+                return null
+            node = node.children[ch]
+        return node
+
+    method collectSuggestions(node: TrieNode, list: List<Pair<String,int>>)
+        if node.isEnd
+            list.add((node.keyword, node.popularity))
+        for child in node.children.values()
+            collectSuggestions(child, list)
+
+    method suggest(prefix: String, N: int) -> List<String>
+        node = searchPrefix(prefix)
+        if node == null return []
+        list = []
+        collectSuggestions(node, list)
+        sort list by popularity desc, keyword asc
+        return top N from list
+
+main()
+    trie = new Trie()
+    trie.insert("pizza hut", 50)
+    trie.insert("pizza point", 40)
+    trie.insert("pita bread", 70)
+    trie.insert("pizzeria", 30)
+
+    print trie.suggest("pi", 3)
+
+    trie.insert("pineapple cafe", 20)
+    print trie.suggest("pi", 4)

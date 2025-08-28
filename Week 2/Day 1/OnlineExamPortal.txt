@@ -1,0 +1,26 @@
+Class User
+    Attributes: username, password
+    Method login()
+
+Class Student extends User
+    Attributes: enrolledCourse
+    Override Method login():
+        If username & password valid AND enrolledCourse exists
+            Print "Student logged in. Exams available."
+        Else
+            Print "Login failed."
+
+Class Admin extends User
+    Attributes: adminPrivileges
+    Override Method login():
+        If username & password valid AND adminPrivileges = true
+            Print "Admin logged in. Exam management tools available."
+        Else
+            Print "Access denied."
+
+Main:
+    Create Student("john123", "pass", "JavaCourse")
+    Create Admin("admin01", "securePass", true)
+
+    student.login()
+    admin.login()
