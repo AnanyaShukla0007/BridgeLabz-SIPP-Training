@@ -1,0 +1,15 @@
+attendance[30][30]   // 30 students × 30 days
+
+method mark(student, day, value):
+    attendance[student][day] = value
+
+method dailySummary(day):
+    count 1s in column[day]
+
+method monthlySummary(student):
+    count 1s in row[student]
+
+method defaulterList():
+    for each student:
+        if monthlySummary(student) < 22:
+            print student

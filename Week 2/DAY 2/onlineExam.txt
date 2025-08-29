@@ -1,0 +1,20 @@
+class User
+    username, password
+    method login()
+
+class Student extends User
+    enrolled
+    override login():
+        if valid(username, password) and enrolled:
+            show exams
+
+class Admin extends User
+    override login():
+        if valid(username, password) and hasAdminRole:
+            show exam management tools
+
+main():
+    student = new Student("john123", "pass", true)
+    student.login()
+    admin = new Admin("admin1", "pass")
+    admin.login()

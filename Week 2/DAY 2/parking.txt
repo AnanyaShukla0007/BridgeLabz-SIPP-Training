@@ -1,0 +1,22 @@
+class Vehicle
+    vehicleNumber, entryTime
+    method calculateFee(exitTime)
+
+class Car extends Vehicle
+    override calculateFee(exitTime):
+        hours = ceil(exitTime - entryTime)
+        return 50 + (hours-1)*30
+
+class Bike extends Vehicle
+    override calculateFee(exitTime):
+        hours = ceil(exitTime - entryTime)
+        return 20 + (hours-1)*10
+
+class Truck extends Vehicle
+    override calculateFee(exitTime):
+        hours = ceil(exitTime - entryTime)
+        return 100 + (hours-1)*50
+
+main():
+    car = new Car("KA05AB1234", 10:00)
+    fee = car.calculateFee(13:30) → 125

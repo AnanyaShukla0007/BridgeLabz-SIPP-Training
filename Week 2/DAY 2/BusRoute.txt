@@ -1,0 +1,14 @@
+class Node
+    stopName, next
+
+class BusRoute
+    head
+    insert(afterStop, newStop)
+    delete(stopName)
+    search(stopName)
+
+main():
+    route = Depot → Main Street → City Mall → Hospital → Airport
+    route.insert("City Mall", "University")
+    route.delete("Hospital")
+    route.search("Airport") → found

@@ -1,0 +1,14 @@
+class WordCounter
+    method countWords(text):
+        words = split text into lowercase words (remove punctuation)
+        map = new HashMap<String, Integer>()
+        for word in words:
+            map[word] = map.getOrDefault(word, 0) + 1
+        sortedWords = sort map by frequency
+        for entry in sortedWords:
+            print entry.key + " → " + entry.value
+
+main():
+    text = "The news today is about the rise in technology trends."
+    counter = new WordCounter()
+    counter.countWords(text)
