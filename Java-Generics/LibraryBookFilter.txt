@@ -1,0 +1,21 @@
+
+
+CLASS Book
+    VARIABLE title : STRING
+    VARIABLE publishedYear : INTEGER
+    VARIABLE rating : DOUBLE
+
+MAIN
+    books : LIST<Book>
+    books.add( Book("Java Mastery", 2018, 4.7) )
+    books.add( Book("Old Classics", 2010, 4.8) )
+    books.add( Book("Modern Streams", 2021, 4.9) )
+
+    filteredBooks = books.stream()
+                    .filter( book -> book.publishedYear > 2015 )
+                    .filter( book -> book.rating > 4.5 )
+                    .collect( toList )
+
+    PRINT "Books after 2015 with rating > 4.5:"
+    FOR book IN filteredBooks
+        PRINT book.title + " (" + book.publishedYear + ") - Rating: " + book.rating

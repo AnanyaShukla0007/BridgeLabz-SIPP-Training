@@ -1,0 +1,22 @@
+
+
+CLASS Employee
+    VARIABLE name : STRING
+    VARIABLE department : STRING
+    VARIABLE salary : DOUBLE
+
+MAIN
+    employees : LIST<Employee>
+    employees.add( Employee("Amit", "IT", 55000) )
+    employees.add( Employee("Rohit", "HR", 45000) )
+    employees.add( Employee("Priya", "IT", 60000) )
+
+    targetDept = "IT"
+
+    itEmployees = employees.stream()
+                   .filter( emp -> emp.department == targetDept )
+                   .collect( toList )
+
+    PRINT "Employees in " + targetDept + " Department:"
+    FOR emp IN itEmployees
+        PRINT emp.name + " - " + emp.salary

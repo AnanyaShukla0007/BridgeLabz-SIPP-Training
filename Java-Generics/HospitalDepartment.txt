@@ -1,0 +1,21 @@
+
+CLASS Doctor
+    VARIABLE name : STRING
+    VARIABLE specialization : STRING
+
+MAIN
+    departmentMap : MAP<String, LIST<Doctor>>
+
+    // Add departments
+    departmentMap["Cardiology"] = [ Doctor("Dr. A", "Heart"), Doctor("Dr. B", "Heart") ]
+    departmentMap["Neurology"] = [ Doctor("Dr. C", "Brain"), Doctor("Dr. D", "Brain") ]
+
+    // Filter doctors by specialization
+    targetSpecialization = "Heart"
+    FOR each department IN departmentMap
+        doctors = departmentMap[department]
+        filteredDoctors = FILTER doctors WHERE doctor.specialization == targetSpecialization
+        PRINT "Department: " + department
+        FOR doc IN filteredDoctors
+            PRINT doc.name
+
